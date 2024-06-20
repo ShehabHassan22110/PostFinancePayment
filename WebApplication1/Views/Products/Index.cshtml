@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "GetAllActivities";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section Links {
+    <link src="https://cdn.datatables.net/2.0.1/css/dataTables.bootstrap5.css" />
+
+
+    <style>
+        .dt-search {
+            width: 250px;
+        }
+    </style>
+}
+
+<!-- Content wrapper -->
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-fluid flex-grow-1 ">
+        <h4 style="color:white" class="fw-bold py-3 mb-4">Products    </h4>
+
+        <!-- Basic Bootstrap Table -->
+        <div class="card">
+            <div class=" text-nowrap mx-4">
+
+                
+
+              
+                <div class="">
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive">
+
+                                <table id="example" class=" table  text-center" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Buy</th>
+
+                                          
+                                          
+                                        </tr>
+
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                              
+                                                <td>@item.Id</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Price</td>
+                                                <td><a asp-controller="Order" asp-action="PaymentWay" asp-route-id="@item.Id" class="btn btn-primary">Click to buy</a></td>
+
+                                             
+
+                                            </tr>
+
+
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Basic Bootstrap Table -->
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+    <script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.1/js/dataTables.bootstrap5.js"></script>
+    <script>
+
+        new DataTable('#example');
+
+    </script>
+    <script src="~/js/site.js"></script>
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
+   
+
+
+}
+
+

@@ -1,0 +1,372 @@
+﻿
+<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html lang="en"
+      class="light-style layout-menu-fixed"
+      dir="ltr"
+      data-theme="theme-default"
+      data-assets-path="~/Dashboard/assets/"
+      data-template="vertical-menu-template-free">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Dashboard - WeDo24 </title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="~/Dashboard/assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="~/Dashboard/assets/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="~/Dashboard/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="~/Dashboard/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="~/Dashboard/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/Dashboard/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <link rel="stylesheet" href="~/Dashboard/assets/vendor/libs/apex-charts/apex-charts.css" />
+
+    <!-- Page CSS -->
+    <!-- Helpers -->
+    <script src="~/Dashboard/assets/vendor/js/helpers.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="~/Dashboard/assets/js/config.js"></script>
+    @await RenderSectionAsync("Links", required: false)
+
+   <style>
+       @@media (max-width: 767.98px) {
+        .ClockDate{
+        display:none;
+                }
+
+            .companyName {
+                display: none;
+            }
+
+            .lang {
+                display: none;
+            }      
+       }    
+   </style>
+
+
+</head>
+
+<body onload="timeCount();">
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <!-- Menu -->
+
+            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+                <div class="app-brand demo">
+                    <a asp-controller="Home" asp-action="Index" class="app-brand-link">
+                        <span class="app-brand-logo demo">
+                            <img class="logoImg" style="width:140px" src="~/Dashboard/assets/img/logo.png">
+
+                        </span>
+                    </a>
+
+                    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                        <i class="bx bx-chevron-left bx-sm align-middle"></i>
+                    </a>
+                </div>
+
+                <div class="menu-inner-shadow"></div>
+
+                <ul class="menu-inner py-1">
+                    <!-- Dashboard -->
+                   
+                    
+
+
+                        <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Pages</span>
+                        </li>
+                   
+                        <li class="menu-item">
+                        <a asp-controller="Products" asp-action="Index"  class="menu-link ">
+                                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                                <div data-i18n="Account Settings"> Products</div>
+                            </a>
+
+                        </li>
+
+
+                        <!-- Components -->
+                        <!-- Cards -->
+                        <li class="menu-item">
+                            <a asp-controller="Activities" asp-action="GetAllActivities" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-collection"></i>
+                                <div data-i18n="Basic">Payments</div>
+                            </a>
+                        </li>
+                       
+                    
+
+                   
+                    
+
+
+
+                </ul>
+            </aside>
+            <!-- / Menu -->
+            <!-- Layout container -->
+            <div class="layout-page" style="background-color:#008080">
+                <!-- Navbar -->
+
+                <nav class="layout-navbar mb-3 navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                     id="layout-navbar">
+                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                            <i class="bx bx-menu bx-sm"></i>
+                        </a>
+                    </div>
+
+                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                        <div class="nav-item d-flex align-items-center mx-2">
+                            <span class="logo-container align-content-center d-flex justify-content-cente">
+                            </span>
+
+
+                        </div>
+                        <!-- Search -->
+                        <div class="ClockDate navbar-nav align-items-center mx-auto">
+                          
+                            <div class="nav-item d-flex align-items-center mx-2" >
+                                <i class='bx bxs-calendar mx-2' style="font-size:25px"></i>
+                                <span id="date" style="font-size:20px"></span>
+
+                                <i class='bx bxs-time mx-2' style="font-size:25px"></i>
+                                <span id="clock" style="font-size:20px"></span>
+
+
+                            </div>
+
+                        </div>
+
+                        <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+
+                            <li class="nav-item d-flex navbar-dropdown dropdown-user dropdown mx-4">
+                                
+                                <ul class="dropdown-menu dropdown-menu-end">
+
+
+
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-between"
+                                           href="@Url.Action("SetLanguage", "Language", new {
+                                                  culture = "de",
+                                                  returnUrl = Context.Request.Path + Context.Request.QueryString
+                                              })">
+                                            <img src="~/Dashboard/assets/img/de-flag.png" width="25" height="25" class="mt-1" />
+                                            <span>German</span>
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+
+
+
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-between"
+                                           href="@Url.Action("SetLanguage", "Language", new {
+                                                  culture = "en-US",
+                                                  returnUrl = Context.Request.Path + Context.Request.QueryString
+                                              })">
+                                            <img src="~/Dashboard/assets/img/us-flag.png" width="25" height="25" class="mt-1" />
+                                            <span> English</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-between"
+                                           href="@Url.Action("SetLanguage", "Language", new {
+                                                  culture = "it",
+                                                  returnUrl = Context.Request.Path + Context.Request.QueryString
+                                              })">
+                                            <img src="~/Dashboard/assets/img/it-flag.png" width="25" height="25" class="mt-1" />
+                                            <span>Italy</span>
+                                        </a>
+
+                                    </li>
+                                   
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-between"
+                                           href="@Url.Action("SetLanguage", "Language", new {
+                                                  culture = "fr",
+                                                  returnUrl = Context.Request.Path + Context.Request.QueryString
+                                              })">
+                                            <img src="~/Dashboard/assets/img/fr-flag.png" width="25" height="25" class="mt-1" />
+                                            <span>France</span>
+                                        </a>
+
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item lh-1 me-3">
+                                <div class="companyName">
+                                    
+                                </div>
+                            </li>
+                            <!-- User -->
+                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                    <div class="avatar avatar-online">
+                                        <img src="~/Dashboard/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                    </div>
+
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+
+
+                                    <li>
+
+                                       
+                                    </li>
+
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+
+
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Products" asp-action="Index" asp-route-name="@User.Identity.Name">
+                                            <i class="bx bx-cog me-2"></i>
+                                            <span class="align-middle"></span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item">
+                                            <form asp-controller="Account" asp-action="LogOut">
+                                                <i class="bx bx-power-off me-2"></i>
+                                                <input type="submit" class="align-middle" style="border:none; background:none" value="Log Out " />
+
+                                            </form>
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <!--/ User -->
+                        </ul>
+                    </div>
+                </nav>
+
+                <!-- / Navbar -->
+                <!-- Overlay -->
+
+                @RenderBody()
+                <div class="layout-overlay layout-menu-toggle"></div>
+            </div>
+            <!-- / Layout wrapper -->
+
+
+
+    </div>
+        </div>
+
+            <!-- Core JS -->
+            <!-- build:js assets/vendor/js/core.js -->
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        function timeCount() {
+            var today = new Date();
+
+            var day = today.getDate();
+            var month = (today.getMonth() + 1).toString().padStart(2, '0');
+            var year = today.getFullYear();
+
+            var hour = today.getHours();
+            if (hour < 10) hour = "0" + hour;
+
+            var minute = today.getMinutes();
+            if (minute < 10) minute = "0" + minute;
+
+            var second = today.getSeconds();
+            if (second < 10) second = "0" + second;
+
+            document.getElementById("clock").innerHTML =
+                 hour + ":" + minute ;
+            document.getElementById("date").innerHTML =
+                day + "." + month + "." + year;
+
+            setTimeout("timeCount()", 1000);
+        }
+    </script>
+    <script src="~/Dashboard/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="~/Dashboard/assets/vendor/libs/popper/popper.js"></script>
+    <script src="~/Dashboard/assets/vendor/js/bootstrap.js"></script>
+
+            <script src="~/Dashboard/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+            <script src="~/Dashboard/assets/vendor/js/menu.js"></script>
+            <!-- endbuild -->
+            <!-- Vendors JS -->
+            <script src="~/Dashboard/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
+            <!-- Main JS -->
+            <script src="~/Dashboard/assets/js/main.js"></script>
+
+            <!-- Page JS -->
+            <script src="~/Dashboard/assets/js/dashboards-analytics.js"></script>
+
+            <!-- Place this tag in your head or just before your close body tag. -->
+            <script async defer src="https://buttons.github.io/buttons.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <!-- Another JS -->
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+</body>
+</html>

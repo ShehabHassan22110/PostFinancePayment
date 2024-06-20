@@ -1,0 +1,76 @@
+﻿@model WebApplication1.Dtos.PaymentDto
+
+@{
+    ViewData["Title"] = "PostFinancePayment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-fluid flex-grow-1 ">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card mb-4 py-3 text-center">
+                    <h3 class="mb-0" style="font-weight: 800;">
+                       Order-Nr.: #111111111
+                       
+                    </h3>
+                </div>
+
+            </div>
+
+            <form asp-controller="Order" asp-action="PostFinancePayment">
+
+                <div class="row" style="display: flex;align-items: center;justify-content: center;">
+
+                    
+                    <div class="col-md-6 " style="margin-top: 70px;">
+
+                        <div class="bg-label-primary p-4">
+                            <div>
+                                <div class="row p-2">
+                                    <div class="mb-3 col-md-12 text-center">
+                                        <h5 style="color:blue ; font-weight:800">Enter the ID number.</h5>
+                                        <h5 style="color:aliceblue">Sie finden diese je nach Kartentyp an der marjierten Stelle auf der Kartenruckseite </h5>
+                                    </div>
+                                    <div class="col-md-12 d-flex justify-content-center ">
+                                        <img src="~/Dashboard/assets/img/Post_Code.png" class="h-75" />
+                                    </div>
+                                    <div class=" col-md-12">
+                                        <input asp-for="CardId" class="form-control"
+                                               type="text"
+                                               placeholder="ID Number" />
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                            <div>
+                            </div>
+                        </div>
+
+                        <div class="px-5">
+
+                            <div class="butttons d-flex justify-content-center mt-3">
+                                <a asp-controller="Products" asp-action="Index" class="btn btn-danger px-5 " style="font-size:20px">Cancel</a>
+
+                                <input type="submit" value="Pay Now" class="btn btn-primary px-5 " style="font-size:20px" />
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- / Content -->
+</div>
